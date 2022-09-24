@@ -2,4 +2,5 @@
 Fall 2022 Software Quality Assurance Project
 
 Team Name: SQA Team
+
 Team Members: Jamie Whitehead, Mitchel Santillan
