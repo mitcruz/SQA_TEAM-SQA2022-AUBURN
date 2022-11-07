@@ -6,6 +6,7 @@ import csv
 import time 
 from datetime import datetime
 
+# my comment
 
 def giveTimeStamp():
   tsObj = time.time()
@@ -42,7 +43,7 @@ if __name__=='__main__':
 
     t1 = time.time()
     print('Started at:', giveTimeStamp() )
-    print('*'*100 )
+    print('*'*100)
 
     project_with_test = checkTestFile("../Data/supervised/GITHUB_REPOS")
 #     project_with_test = checkTestFile("../Data/supervised/GITLAB_REPOS")
@@ -54,4 +55,4 @@ if __name__=='__main__':
     t2 = time.time()
     time_diff = round( (t2 - t1 ) / 60, 5) 
     print('Duration: {} minutes'.format(time_diff) )
-    print( '*'*100  )  
+    print( '*'*100  )
