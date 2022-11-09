@@ -3,14 +3,17 @@ import fnmatch
 import pandas as pd 
 import numpy as np
 import csv 
-import time 
+import time
+import forensics
 from datetime import datetime
 
 # my comment
 
 def giveTimeStamp():
+  logO = forensics.getSQALogger()
   tsObj = time.time()
   strToret = datetime.fromtimestamp(tsObj).strftime('%Y-%m-%d %H:%M:%S')
+  logO.debug('{}*{}'.format('detect_test.py', 'giveTimeStamp'))
   return strToret
    
     
@@ -40,7 +43,6 @@ def checkTestFile(path2dir):
  
 
 if __name__=='__main__':
-
     t1 = time.time()
     print('Started at:', giveTimeStamp() )
     print('*'*100)
