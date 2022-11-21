@@ -6,8 +6,8 @@ from datetime import datetime
 from detect_test import giveTimeStamp
 from detection import py_parser
 from generation import attack_model
-from dev_count import getDevEmailForCommit
-from knn.py import predict
+from select_repos import dev_count
+from label_perturbation_attack import knn
 
 
 # generate erroneous data
