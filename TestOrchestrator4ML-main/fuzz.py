@@ -1,8 +1,11 @@
 import os
+import pandas as pd
 
+from detection import constants
+from datetime import datetime
 from detect_test import giveTimeStamp
-from py_parser import getImport
-from attack_model import calculate_k
+from detection import py_parser
+from generation import attack_model
 from dev_count import getDevEmailForCommit
 from knn.py import predict
 
@@ -15,7 +18,7 @@ def fuzzGiveTimeStamp():
 
 	strToret = fvalue1
 
-	if strToret = strftime('%Y-%m-%d %H:%M:%S'):
+	if strToret == strftime('%Y-%m-%d %H:%M:%S'):
 
 		giveTimeStamp()
 
@@ -28,20 +31,20 @@ def fuzzGetImport():
 
 	import_list = fvalue2
 
-	if import_list = []:
+	if import_list == []:
 
 		getImport()
 
 	else:
 
-	print("Error: Import_list is not a list.") 
+		print("Error: Import_list is not a list.") 
 
 
 def fuzzCalculate_K():
 
 	kVals = fvalue3
 
-	if kVals = (3, 10, 2):
+	if kVals == (3, 10, 2):
 
 		calculate_k()
 
@@ -55,7 +58,7 @@ def fuzzGetDevEmailForCommit():
 
 	author_emails = fvalue4
 
-	if author_emails = []:
+	if author_emails == []:
 
 		getDevEmailForCommit()
 
@@ -69,7 +72,7 @@ def fuzzPredict():
 
 	predictions = fvalue5
 
-	if predictions = []:
+	if predictions == []:
 
 		predict()
 
