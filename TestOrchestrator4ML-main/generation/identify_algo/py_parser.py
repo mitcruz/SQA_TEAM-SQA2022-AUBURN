@@ -3,7 +3,7 @@ import os
 import constants 
 import astdump
 import forensics
-import logging
+
 
 def getPythonParseObject( pyFile ): 
 	try:

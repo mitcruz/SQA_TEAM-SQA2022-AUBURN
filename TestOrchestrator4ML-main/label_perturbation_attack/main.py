@@ -14,6 +14,7 @@ import cliffsDelta
 
 
 
+
 def giveTimeStamp():
     tsObj = time.time()
     strToret = datetime.fromtimestamp(tsObj).strftime('%Y-%m-%d %H:%M:%S')
@@ -99,7 +100,7 @@ def calculate_stat(baseline_data, experiment_data):
     cliffs_delta = cliffsDelta.cliffsDelta(list(experiment_data), list(baseline_data))
     print(' p-value:{}, cliffs:{}'.format(p, cliffs_delta) )
     print('='*50)
-    
+
 def repeat_experiment():
     model_name = 'KNeighborsClassifier'
 

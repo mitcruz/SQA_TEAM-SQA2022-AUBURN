@@ -1,9 +1,8 @@
 import ast 
 import os 
-from generation import constants
+import constants
 import astdump
 import forensics
-import logging
 
 def getPythonParseObject( pyFile ): 
 	try:
@@ -73,7 +72,7 @@ def getFunctionAssignments(class_body):
                     	func_name_dict  = funcName.__dict__
                     	func_name = func_name_dict[constants.ATTRIB_KW] 
                     	func_list.append(func_name )  
-    logO.debug('{}*{}'.format('py_parser.py', 'getFunctionAssignments'))
+    logO.debug('{}*{}*{}'.format('py_parser.py', 'getFunctionAssignments'))
     return func_list
 
         

@@ -32,7 +32,7 @@ def calculate_k(X_train, X_test, y_train, y_test):
         accuracies.append(acc)
     max_index = accuracies.index(max(accuracies))
     print("selected k = " + str(2 * (max_index + 1) + 1))
-    logO.debug('{}*{}*{}*{}'.format('attack_model.py', 'calculate_k'))
+    logO.debug('{}*{}'.format('attack_model.py', 'calculate_k'))
     return (2 * (max_index + 1) + 1)
     
 
