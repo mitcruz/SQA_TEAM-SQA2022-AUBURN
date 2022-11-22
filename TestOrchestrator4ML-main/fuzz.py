@@ -1,9 +1,11 @@
 import os
 import pandas as pd
 
+
+from dataclasses import dataclass
 from detection import constants
 from datetime import datetime
-from detect_test import giveTimeStamp
+from generation import py_parser
 from detection import py_parser
 from generation import attack_model
 from select_repos import dev_count
@@ -14,24 +16,24 @@ from label_perturbation_attack import knn
 # then use the generated data to fuzz 5 methods.
 # this file should have the erroneous data and then you can use the file to then fuzz.
 
-def fuzzGiveTimeStamp():
+def fuzzCheckAlgoNames(fuzz):
 
-	strToret = fvalue1
+	algo_list = fuzz.fValue1
+	
+	if not algo_list:
 
-	if strToret == strftime('%Y-%m-%d %H:%M:%S'):
-
-		giveTimeStamp()
+		checkAlgoNames()
 
 	else:
 
-		print("Error: Wrong value for strToret.")
+		print("Error: Wrong value for algo_list.")
 
 
-def fuzzGetImport():
+def fuzzGetImport(fuzz):
 
-	import_list = fvalue2
+	import_list = fuzz.fValue2
 
-	if import_list == []:
+	if not import_list:
 
 		getImport()
 
@@ -40,9 +42,9 @@ def fuzzGetImport():
 		print("Error: Import_list is not a list.") 
 
 
-def fuzzCalculate_K():
+def fuzzCalculate_K(fuzz):
 
-	kVals = fvalue3
+	kVals = fuzz.fValue3
 
 	if kVals == (3, 10, 2):
 
@@ -54,11 +56,11 @@ def fuzzCalculate_K():
 
 
 
-def fuzzGetDevEmailForCommit():
+def fuzzGetDevEmailForCommit(fuzz):
 
-	author_emails = fvalue4
+	author_emails = fuzz.fValue4
 
-	if author_emails == []:
+	if not author_emails:
 
 		getDevEmailForCommit()
 
@@ -68,11 +70,11 @@ def fuzzGetDevEmailForCommit():
 
 
 
-def fuzzPredict():
+def fuzzPredict(fuzz):
 
-	predictions = fvalue5
+	predictions = fuzz.fValue5
 
-	if predictions == []:
+	if not predictions:
 
 		predict()
 
@@ -80,23 +82,24 @@ def fuzzPredict():
 
 		print("Error: predictions did not equal a list.")
 
-
-def fuzzValues():
+@dataclass
+class fuzzValues:
 	
 	fValue1 = "Ｔｈｅ ｑｕｉｃｋ ｂｒｏｗｎ ｆｏｘ ｊｕｍｐｓ ｏｖｅｒ ｔｈｅ ｌａｚｙ ｄｏｇ"
-	fvalue2 = "-9223372036854775808/-1"
-	fvalue3 = "<script\\x0Dtype=\"text/javascript\">javascript:alert(1);</script>"
-	fvalue4 = "../../../../../../../../../../../etc/hosts"
-	fvalue5 = "999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+	fValue2 = "-9223372036854775808/-1"
+	fValue3 = "<script\\x0Dtype=\"text/javascript\">javascript:alert(1);</script>"
+	fValue4 = "../../../../../../../../../../../etc/hosts"
+	fValue5 = "999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+
 
 
 
 
 
 if __name__ == '__main__':
-	
-	fuzzGiveTimeStamp()
-	fuzzCalculate_K()
-	fuzzGetDevEmailForCommit()
-	fuzzPredict()
-	fuzzGetImport()
+	fuzz = fuzzValues()
+	fuzzCheckAlgoNames(fuzz)
+	fuzzCalculate_K(fuzz)
+	fuzzGetDevEmailForCommit(fuzz)
+	fuzzPredict(fuzz)
+	fuzzGetImport(fuzz)

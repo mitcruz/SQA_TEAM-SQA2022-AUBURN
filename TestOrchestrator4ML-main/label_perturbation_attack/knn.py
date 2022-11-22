@@ -9,7 +9,7 @@ from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import roc_curve, auc
 from matplotlib import pyplot as plt
-
+import forensics
 
 def euc_dist(x1, x2):
     return np.sqrt(np.sum((x1-x2)**2))
@@ -23,7 +23,7 @@ def predict(self, X_test):
     Get the most frequent class of these rows
     Return the predicted class
     """
-
+    logO = forensics.getSQALogger()
     predictions = [] 
     for i in range(len(X_test)):
         dist = np.array([euc_dist(X_test[i], x_t) for x_t in self.X_train])
@@ -36,7 +36,8 @@ def predict(self, X_test):
                 neigh_count[self.Y_train[idx]] = 1
         sorted_neigh_count = sorted(neigh_count.items(),    
         key=operator.itemgetter(1), reverse=True)
-        predictions.append(sorted_neigh_count[0][0]) 
+        predictions.append(sorted_neigh_count[0][0])
+    logO.debug('{}*{}*{}'.format('knn.py', 'predict')) 
     return predictions
     
 def prepare_data():

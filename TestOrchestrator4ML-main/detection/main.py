@@ -5,6 +5,7 @@ import os
 import pandas as pd
 import py_parser 
 import numpy as np 
+import forensics
 
 
 def giveTimeStamp():
@@ -43,6 +44,7 @@ def checkClassificationAlgoTest(test_script):
   
   
 def checkAccuracyTest(test_script):
+    logO = forensics.getSQALogger()
     print("metric check: ", test_script)
     py_tree = py_parser.getPythonParseObject(test_script)
     metric_list = py_parser.getMetricNames( py_tree ) 
@@ -50,6 +52,7 @@ def checkAccuracyTest(test_script):
         return 0
     else:
         return 1
+    logO.debug('{}*{}'.format('main.py', 'checkAccuracyTest'))
     
     
 def chackAttackTest(test_script, assert_list):

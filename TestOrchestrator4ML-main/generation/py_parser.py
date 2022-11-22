@@ -1,7 +1,8 @@
 import ast 
 import os 
-import constants 
+from generation import constants
 import astdump
+import forensics
 
 def getPythonParseObject( pyFile ): 
 	try:
@@ -54,6 +55,7 @@ def getFunctionDetailsForClaases(pyTree):
     
 
 def getFunctionAssignments(class_body):
+    logO = forensics.getSQALogger()
     func_list = []
     for stmt_ in class_body:
         for node_ in ast.walk(stmt_):
@@ -70,6 +72,7 @@ def getFunctionAssignments(class_body):
                     	func_name_dict  = funcName.__dict__
                     	func_name = func_name_dict[constants.ATTRIB_KW] 
                     	func_list.append(func_name )  
+    logO.debug('{}*{}'.format('py_parser.py', 'getFunctionAssignments'))
     return func_list
 
         
