@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import csv 
 import time
-import forensics
+from Forensic import forensics
 from datetime import datetime
 
 # my comment

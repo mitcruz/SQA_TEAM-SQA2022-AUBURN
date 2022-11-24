@@ -5,7 +5,7 @@ import os
 import pandas as pd
 import py_parser 
 import numpy as np 
-import forensics
+from Forensic import forensics
 
 
 def giveTimeStamp():
