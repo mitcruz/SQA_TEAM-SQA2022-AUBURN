@@ -14,7 +14,7 @@ from sklearn.metrics import roc_curve, auc
 from matplotlib import pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense
-import forensics
+from Forensic import forensics
 import logging
 
 def calculate_k(X_train, X_test, y_train, y_test):

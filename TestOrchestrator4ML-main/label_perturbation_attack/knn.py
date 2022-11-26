@@ -13,6 +13,7 @@ from Forensic import forensics
 
 def euc_dist(x1, x2):
     return np.sqrt(np.sum((x1-x2)**2))
+
         
 
 def predict(self, X_test):
@@ -68,6 +69,7 @@ def calculate_k(X_train, X_test, y_train, y_test):
     """
     Training our model on all possible K values (odd) from 3 to 10  
     """
+    logO = forensics.getSQALogger()
     kVals = np.arange(3,10,2)
     accuracies = []
     for k in kVals:
@@ -84,7 +86,7 @@ def calculate_k(X_train, X_test, y_train, y_test):
 #     plt.plot(kVals, accuracies) 
 #     plt.xlabel("K Value") 
 #     plt.ylabel("Accuracy")
-
+    logO.debug('{}*{}*{}*{}'.format('knn.py', 'predict'))
     return (2 * (max_index + 1) + 1)
     
 

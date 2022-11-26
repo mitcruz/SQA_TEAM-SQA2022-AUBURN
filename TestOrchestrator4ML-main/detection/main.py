@@ -9,11 +9,14 @@ from Forensic import forensics
 
 
 def giveTimeStamp():
-  tsObj = time.time()
-  strToret = datetime.datetime.fromtimestamp(tsObj).strftime(constants.TIME_FORMAT) 
-  return strToret
+    logO = forensics.getSQALogger()
+    tsObj = time.time()
+    strToret = datetime.datetime.fromtimestamp(tsObj).strftime(constants.TIME_FORMAT)
+    logO.debug('{}*{}'.format('main.py', 'giveTimeStamp'))
+    return strToret
   
 def get_test_details(test_script):
+    
     test_name_list = []
     test_with_assert_list = []
     py_tree = py_parser.getPythonParseObject(test_script)
@@ -29,7 +32,7 @@ def get_test_details(test_script):
             the_assert_tup = (test_script, func_[0], tuple([e for e in func_[3]]))
 #             print(the_assert_tup)
             test_with_assert_list.append( the_assert_tup )
-            
+    
     return test_name_list, test_with_assert_list
 
 
@@ -44,15 +47,15 @@ def checkClassificationAlgoTest(test_script):
   
   
 def checkAccuracyTest(test_script):
-    logO = forensics.getSQALogger()
+    
     print("metric check: ", test_script)
     py_tree = py_parser.getPythonParseObject(test_script)
-    metric_list = py_parser.getMetricNames( py_tree ) 
+    metric_list = py_parser.getMetricNames( py_tree )
     if len(metric_list) > 0:
         return 0
     else:
         return 1
-    logO.debug('{}*{}'.format('main.py', 'checkAccuracyTest'))
+
     
     
 def chackAttackTest(test_script, assert_list):
