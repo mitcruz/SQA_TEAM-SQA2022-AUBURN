@@ -24,7 +24,6 @@ def predict(self, X_test):
     Get the most frequent class of these rows
     Return the predicted class
     """
-    logO = forensics.getSQALogger()
     predictions = [] 
     for i in range(len(X_test)):
         dist = np.array([euc_dist(X_test[i], x_t) for x_t in self.X_train])
@@ -37,8 +36,7 @@ def predict(self, X_test):
                 neigh_count[self.Y_train[idx]] = 1
         sorted_neigh_count = sorted(neigh_count.items(),    
         key=operator.itemgetter(1), reverse=True)
-        predictions.append(sorted_neigh_count[0][0])
-    logO.debug('{}*{}'.format('knn.py', 'predict')) 
+        predictions.append(sorted_neigh_count[0][0]) 
     return predictions
     
 def prepare_data():

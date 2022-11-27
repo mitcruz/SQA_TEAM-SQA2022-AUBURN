@@ -9,9 +9,11 @@ import label_perturbation_main
 
 
 def giveTimeStamp():
-  tsObj = time.time()
-  strToret = datetime.datetime.fromtimestamp(tsObj).strftime(constants.TIME_FORMAT) 
-  return strToret
+    logO = forensics.getSQALogger()
+    tsObj = time.time()
+    strToret = datetime.datetime.fromtimestamp(tsObj).strftime(constants.TIME_FORMAT)
+    logO.debug('{}*{}'.format('main.py', 'giveTimeStamp'))
+    return strToret
 
 
 def generateUnitTest(algo, attack_type):

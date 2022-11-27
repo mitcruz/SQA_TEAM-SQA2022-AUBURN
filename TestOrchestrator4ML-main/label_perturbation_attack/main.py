@@ -16,8 +16,10 @@ import cliffsDelta
 
 
 def giveTimeStamp():
+    logO = forensics.getSQALogger()
     tsObj = time.time()
     strToret = datetime.fromtimestamp(tsObj).strftime('%Y-%m-%d %H:%M:%S')
+    logO.debug('{}*{}*{}'.format('main.py', 'giveTimeStamp'))
     return strToret
     
 def run_experiment(model_name):

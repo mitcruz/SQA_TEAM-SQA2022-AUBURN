@@ -16,7 +16,7 @@ def giveTimeStamp():
     return strToret
   
 def get_test_details(test_script):
-    
+    logO = forensics.getSQALogger()
     test_name_list = []
     test_with_assert_list = []
     py_tree = py_parser.getPythonParseObject(test_script)
@@ -32,7 +32,7 @@ def get_test_details(test_script):
             the_assert_tup = (test_script, func_[0], tuple([e for e in func_[3]]))
 #             print(the_assert_tup)
             test_with_assert_list.append( the_assert_tup )
-    
+    logO.debug('{}*{}'.format('main.py', 'get_test_details'))
     return test_name_list, test_with_assert_list
 
 
@@ -47,7 +47,6 @@ def checkClassificationAlgoTest(test_script):
   
   
 def checkAccuracyTest(test_script):
-    
     print("metric check: ", test_script)
     py_tree = py_parser.getPythonParseObject(test_script)
     metric_list = py_parser.getMetricNames( py_tree )
