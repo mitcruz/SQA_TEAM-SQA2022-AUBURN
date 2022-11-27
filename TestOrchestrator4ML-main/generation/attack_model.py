@@ -16,7 +16,6 @@ from keras.models import Sequential
 from keras.layers import Dense
 from Forensic import forensics
 
-
 def calculate_k(X_train, X_test, y_train, y_test):
     """
     Training our model on all possible K values (odd) from 3 to 10  
