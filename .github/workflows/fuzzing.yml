@@ -16,5 +16,8 @@ jobs:
         with:
           python-version: "3.10"
 
-      - run: python TestOrchestrator4ML-main/fuzz.py
+      - run: pip install -r requirements.txt
+        shell: bash
+
+      - run: python fuzz.py
         shell: bash
