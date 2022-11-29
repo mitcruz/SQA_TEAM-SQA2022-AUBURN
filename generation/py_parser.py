@@ -1,6 +1,6 @@
 import ast 
 import os 
-from genertion import constants
+from generation import constants
 import astdump
 from Forensic import forensics
 
