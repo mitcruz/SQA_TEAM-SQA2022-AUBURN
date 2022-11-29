@@ -2,7 +2,7 @@ import ast
 import os 
 from . import constants
 import astdump
-import forensics
+from Forensic import forensics
 
 def getPythonParseObject( pyFile ): 
 	try:
