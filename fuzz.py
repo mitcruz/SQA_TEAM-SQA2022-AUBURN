@@ -3,10 +3,9 @@ import pandas as pd
 
 
 from dataclasses import dataclass
-from detection import constants
 from datetime import datetime
 from generation import py_parser, attack_model
-from detection import py_parser
+from detection import py_parser, constants
 from select_repos import dev_count
 from label_perturbation_attack import knn
 
