@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from detection import constants
 from datetime import datetime
 from generation import py_parser
+from generation import constants
 from detection import py_parser
 from generation import attack_model
 from select_repos import dev_count
